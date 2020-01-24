@@ -499,7 +499,8 @@ PlayerSettings:
   webGLCompressionFormat: 1
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: TEST_EVENTS;ADS_DEBUG;ADS_TEST;CHEATS_ENABLE;one
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
