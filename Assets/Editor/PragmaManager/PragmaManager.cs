@@ -48,21 +48,21 @@ public class PragmaManager : EditorWindow
                 keyValue.IsEnabled = enable;
             }
         }
-        if (GUILayout.Button("Apply"))
+        if (GUILayout.Button("Apply", GUILayout.MinHeight(25)))
         {
             UpdateDefineSymbols();
         }
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.BeginVertical();
-        newSymbolName = EditorGUILayout.TextField("Name: ", newSymbolName).Trim();
-        newSymbolSign = EditorGUILayout.TextField("Symbol: ", newSymbolSign).Trim();
+        newSymbolName = EditorGUILayout.TextField("Name: ", newSymbolName.Trim());
+        newSymbolSign = EditorGUILayout.TextField("Pragma: ", newSymbolSign.Trim());
         EditorGUILayout.EndVertical();
-        if (GUILayout.Button("+"))
+        if (GUILayout.Button("+", GUILayout.MinHeight(30)))
         {
             AddSymbol();
 
         }
-        if (GUILayout.Button("-"))
+        if (GUILayout.Button("-", GUILayout.MinHeight(30)))
         {
             RemoveSymbol();
         }
@@ -90,6 +90,7 @@ public class PragmaManager : EditorWindow
                 newSymbolName = string.Empty;
                 newSymbolSign = string.Empty;
                 UpdateDefineSymbols();
+                break;
             }
         }
     }
