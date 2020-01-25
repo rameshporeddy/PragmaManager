@@ -24,6 +24,13 @@ public class PragmaScriptableObject : ScriptableObject
         }
         pragmaKeys.Add(keyValue);
     }
+    public void SelectDeselectAll(bool enable)
+    {
+        foreach (PragmaKeyValue keyValue in pragmaKeys)
+        {
+            keyValue.IsEnabled = enable;
+        }
+    }
 
 }
 

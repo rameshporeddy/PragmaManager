@@ -500,7 +500,7 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    1: TEST_EVENTS;ADS_DEBUG;ADS_TEST;CHEATS_ENABLE;one
+    1: ADS_TEST;CHEATS_ENABLE
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

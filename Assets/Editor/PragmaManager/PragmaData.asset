@@ -25,6 +25,3 @@ MonoBehaviour:
   - Key: Enable Cheats
     PragmaPattern: CHEATS_ENABLE
     IsEnabled: 1
-  - Key: new
-    PragmaPattern: one
-    IsEnabled: 1

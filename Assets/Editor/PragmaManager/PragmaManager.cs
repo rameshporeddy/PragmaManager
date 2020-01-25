@@ -14,7 +14,7 @@ public class PragmaManager : EditorWindow
     [MenuItem("Tools/PragmaManager")]
     public static void ShowWindow()
     {
-        EditorWindow.GetWindow(typeof(PragmaManager));
+        EditorWindow window = EditorWindow.GetWindow(typeof(PragmaManager), false, "Pragma Manager");
         LoadPragmaData();
         UpdatePragmaData();
     }
@@ -38,7 +38,12 @@ public class PragmaManager : EditorWindow
 
     private static void setLayout()
     {
-        EditorGUILayout.LabelField("Set Pragmas", EditorStyles.boldLabel, GUILayout.MinHeight(25));
+        EditorGUILayout.Space();
+        GUIStyle SectionNameStyle = new GUIStyle();
+        SectionNameStyle.fontSize = 15;
+        SectionNameStyle.fontStyle = FontStyle.Bold;
+
+        EditorGUILayout.LabelField("Set Pragmas:", SectionNameStyle, GUILayout.MinHeight(25));
         foreach (PragmaScriptableObject.PragmaKeyValue keyValue in pragmaData.pragmaKeys)
         {
             string toggleName = string.Format("{0} [{1}]", keyValue.Key, keyValue.PragmaPattern);
@@ -48,10 +53,22 @@ public class PragmaManager : EditorWindow
                 keyValue.IsEnabled = enable;
             }
         }
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Select All", GUILayout.MinHeight(25)))
+        {
+            pragmaData.SelectDeselectAll(true);
+        }
+        if (GUILayout.Button("Deselect All", GUILayout.MinHeight(25)))
+        {
+            pragmaData.SelectDeselectAll(false);
+        }
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.Space();
         if (GUILayout.Button("Apply", GUILayout.MinHeight(25)))
         {
             UpdateDefineSymbols();
         }
+        EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.BeginVertical();
         newSymbolName = EditorGUILayout.TextField("Name: ", newSymbolName.Trim());
@@ -68,7 +85,6 @@ public class PragmaManager : EditorWindow
         }
         EditorGUILayout.EndHorizontal();
     }
-
     private static void AddSymbol()
     {
         if (string.IsNullOrEmpty(newSymbolName) || string.IsNullOrEmpty(newSymbolSign)) return;
