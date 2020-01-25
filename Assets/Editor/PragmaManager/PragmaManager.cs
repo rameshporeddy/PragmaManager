@@ -39,14 +39,11 @@ public class PragmaManager : EditorWindow
     private static void setLayout()
     {
         EditorGUILayout.Space();
-        GUIStyle SectionNameStyle = new GUIStyle();
-        SectionNameStyle.fontSize = 15;
-        SectionNameStyle.fontStyle = FontStyle.Bold;
 
-        EditorGUILayout.LabelField("Set Pragmas:", SectionNameStyle, GUILayout.MinHeight(25));
+        EditorGUILayout.LabelField("Set Pragmas:", new GUIStyle() { fontStyle = FontStyle.Bold, fontSize = 15 }, GUILayout.MinHeight(25));
         foreach (PragmaScriptableObject.PragmaKeyValue keyValue in pragmaData.pragmaKeys)
         {
-            string toggleName = string.Format("{0} [{1}]", keyValue.Key, keyValue.PragmaPattern);
+            string toggleName = string.Format("{0}  [{1}]", keyValue.Key, keyValue.PragmaPattern);
             bool enable = EditorGUILayout.ToggleLeft(toggleName, keyValue.IsEnabled, GUILayout.MinHeight(25));
             if (keyValue.IsEnabled != enable)
             {
